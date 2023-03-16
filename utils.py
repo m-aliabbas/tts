@@ -3,7 +3,6 @@ import inflect
 def convert_to_words(text):
     p = inflect.engine()
     words = text.split()
-    print(words)
     for i, word in enumerate(words):
         if word.isdigit():
             num_word = p.number_to_words(word)

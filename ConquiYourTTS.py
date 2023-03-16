@@ -9,7 +9,7 @@ class ConquiYourTTS(TTSInterface):
     """
 
     def __init__(self, model_repo_path='tts_models/multilingual/multi-dataset/your_tts',
-                 output_speaker='', language='en', progress_bar=False, gpu=False):
+                 output_speaker='referenec_audios/speaker_1.wav', language='en', progress_bar=False, gpu=False,):
         """
         Initialize ConquiYourTTS model.
 
@@ -26,7 +26,7 @@ class ConquiYourTTS(TTSInterface):
         self.output_speaker = output_speaker
         self.language = language
 
-    def get_audio(self, text: str, **kwargs) -> np.ndarray:
+    def get_audio(self, text: str) -> np.ndarray:
         """
         Synthesize audio from input text.
 
@@ -39,5 +39,6 @@ class ConquiYourTTS(TTSInterface):
         text = convert_to_words(text=text)
         print(self.output_speaker)
         wave = self.model.tts(text=text, speaker_wav=self.output_speaker, language=self.language)
-        wave = np.array(wave).astype(np.int16)
+        wave= np.array(wave, dtype=np.float32)
         return wave
+

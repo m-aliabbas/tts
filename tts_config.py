@@ -5,7 +5,7 @@ config = dict()
 # -------------- General configs ------------#
 config["samplerate"] = 16000
 config["language"] = "en"
-config["gpu"] = True
+config["gpu"] = False
 config["progress_bar"] = False
 config["cuda_device"] = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 config["local_flag"] = True 
